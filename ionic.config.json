@@ -1,0 +1,7 @@
+{
+  "name": "keboen-susukan",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
