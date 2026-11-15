@@ -1,2 +1,146 @@
-/* For information on how to create your own theme, please refer to:
-http://ionicframework.com/docs/theming/ */
+/* Ionic theme — maps the keboen design system (docs/DESIGN.md) onto Ionic's
+   component variables so the app shell matches the daisyUI theme in
+   src/theme/global.css.
+
+   Light-only by design: the interface targets bright, outdoor field use. */
+
+:root {
+  /* ---- Brand roles ------------------------------------------------------ */
+
+  /* Primary — teal */
+  --ion-color-primary: #0d9488;
+  --ion-color-primary-rgb: 13, 148, 136;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #0f766e;
+  --ion-color-primary-tint: #14b8a6;
+
+  /* Secondary — leaf green */
+  --ion-color-secondary: #16a34a;
+  --ion-color-secondary-rgb: 22, 163, 74;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #15803d;
+  --ion-color-secondary-tint: #22c55e;
+
+  /* Tertiary — harvest amber */
+  --ion-color-tertiary: #f59e0b;
+  --ion-color-tertiary-rgb: 245, 158, 11;
+  --ion-color-tertiary-contrast: #0f172a;
+  --ion-color-tertiary-contrast-rgb: 15, 23, 42;
+  --ion-color-tertiary-shade: #d97706;
+  --ion-color-tertiary-tint: #fbbf24;
+
+  /* Success — leaf green */
+  --ion-color-success: #16a34a;
+  --ion-color-success-rgb: 22, 163, 74;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #15803d;
+  --ion-color-success-tint: #22c55e;
+
+  /* Warning — harvest amber */
+  --ion-color-warning: #f59e0b;
+  --ion-color-warning-rgb: 245, 158, 11;
+  --ion-color-warning-contrast: #0f172a;
+  --ion-color-warning-contrast-rgb: 15, 23, 42;
+  --ion-color-warning-shade: #d97706;
+  --ion-color-warning-tint: #fbbf24;
+
+  /* Danger — alert red */
+  --ion-color-danger: #dc2626;
+  --ion-color-danger-rgb: 220, 38, 38;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #b91c1c;
+  --ion-color-danger-tint: #ef4444;
+
+  /* Medium — neutral slate */
+  --ion-color-medium: #64748b;
+  --ion-color-medium-rgb: 100, 116, 139;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #475569;
+  --ion-color-medium-tint: #94a3b8;
+
+  /* Light — slate 50 */
+  --ion-color-light: #f8fafc;
+  --ion-color-light-rgb: 248, 250, 252;
+  --ion-color-light-contrast: #0f172a;
+  --ion-color-light-contrast-rgb: 15, 23, 42;
+  --ion-color-light-shade: #f1f5f9;
+  --ion-color-light-tint: #ffffff;
+
+  /* Dark — slate 900 */
+  --ion-color-dark: #0f172a;
+  --ion-color-dark-rgb: 15, 23, 42;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #020617;
+  --ion-color-dark-tint: #1e293b;
+
+  /* ---- Global surfaces ------------------------------------------------- */
+
+  --ion-background-color: #f8fafc;
+  --ion-background-color-rgb: 248, 250, 252;
+  --ion-text-color: #0f172a;
+  --ion-text-color-rgb: 15, 23, 42;
+  --ion-border-color: #e2e8f0;
+  --ion-font-family: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', sans-serif;
+
+  /* ---- Component surfaces --------------------------------------------- */
+
+  --ion-toolbar-background: #ffffff;
+  --ion-toolbar-color: #0f172a;
+  --ion-toolbar-border-color: #e2e8f0;
+
+  --ion-tab-bar-background: #ffffff;
+  --ion-tab-bar-background-focused: #f1f5f9;
+  --ion-tab-bar-border-color: #e2e8f0;
+  --ion-tab-bar-color: #64748b;
+  --ion-tab-bar-color-selected: #0d9488;
+
+  --ion-card-background: #ffffff;
+  --ion-item-background: #ffffff;
+  --ion-item-color: #0f172a;
+  --ion-item-border-color: #e2e8f0;
+}
+
+/* Shape — 12px actions (DESIGN.md "Shapes").
+   Custom properties pierce the shadow DOM, so this overrides ion-button's
+   internal --border-radius (default 4px) reliably.
+   Content cards use daisyUI's `card` (16px via --radius-box). */
+ion-button {
+  --border-radius: 0.75rem;
+}
+
+/* Ionic's Material mode uppercases and letter-spaces button text. The design
+   system uses sentence-case labels for readability, so reset it through the
+   button's native shadow part. */
+ion-button::part(native) {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+/* Ionic's condensed large page titles sit flush against the screen edge after
+   the Tailwind preflight reset. Restore a comfortable gutter to match the
+   content columns below. */
+ion-title.title-large {
+  padding-inline-start: 1rem;
+  padding-inline-end: 1rem;
+}
+
+/* Segment controls (Grafik range/breakdown filters). Ionic's Material segment
+   forces a 90px min-width, uppercase, and 16px padding, which truncates the
+   four range labels on a phone. Keep sentence case and compact spacing so all
+   options stay legible. */
+ion-segment-button {
+  --padding-start: 2px;
+  --padding-end: 2px;
+  min-width: 0;
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  text-transform: none;
+}

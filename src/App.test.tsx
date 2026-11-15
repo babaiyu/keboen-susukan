@@ -1,10 +1,11 @@
-import { render } from '@testing-library/react';
-import React from 'react';
+import { render, screen } from '@testing-library/react';
 import { expect, test } from 'vitest';
 
 import App from './App';
 
-test('renders without crashing', () => {
-  const { baseElement } = render(<App />);
-  expect(baseElement).toBeDefined();
+test('renders the app shell with the three navigation tabs', async () => {
+  render(<App />);
+
+  const labels = await screen.findAllByText(/^(Kebun|Tanaman|Grafik)$/);
+  expect(labels.length).toBeGreaterThanOrEqual(3);
 });

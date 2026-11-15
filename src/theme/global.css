@@ -1,0 +1,88 @@
+@import 'tailwindcss';
+
+@plugin 'daisyui' {
+  themes: false;
+}
+
+@plugin 'daisyui/theme' {
+  name: 'keboen';
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  /* Base surfaces — white cards, #F8FAFC canvas, #E2E8F0 borders. */
+  --color-base-100: #ffffff;
+  --color-base-200: #f8fafc;
+  --color-base-300: #e2e8f0;
+  --color-base-content: #0f172a;
+
+  /* Primary teal — brand and primary actions. */
+  --color-primary: #0d9488;
+  --color-primary-content: #ffffff;
+
+  /* Secondary leaf green — healthy / verified states. */
+  --color-secondary: #16a34a;
+  --color-secondary-content: #ffffff;
+
+  /* Accent harvest amber — warnings and pending. */
+  --color-accent: #f59e0b;
+  --color-accent-content: #0f172a;
+
+  /* Neutral deep slate. */
+  --color-neutral: #0f172a;
+  --color-neutral-content: #ffffff;
+
+  --color-info: #0284c7;
+  --color-info-content: #ffffff;
+
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+
+  --color-warning: #f59e0b;
+  --color-warning-content: #0f172a;
+
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  /* Shapes — 12px fields, 16px cards, pill selectors. */
+  --radius-selector: 1rem;
+  --radius-field: 0.75rem;
+  --radius-box: 1rem;
+
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@theme {
+  /* Typography — Plus Jakarta Sans (self-hosted variable font); minimum 14px
+     body for field use. */
+  --font-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Brand extensions named in DESIGN.md. */
+  --color-teal-deep: #042f2e;
+  --color-teal-hover: #0f766e;
+  --color-teal-tint: #f0fdfa;
+}
+
+@layer base {
+  /* Page canvas is the light slate (#F8FAFC) so white cards read as crisp
+     surfaces on top of it (DESIGN.md "Elevation & Depth"). */
+  :root {
+    --root-bg: var(--color-base-200);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-base-200);
+    color: var(--color-base-content);
+  }
+}

@@ -2,7 +2,7 @@ import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Navigate, Route } from 'react-router-dom';
 
-import Home from './pages/Home';
+import Tabs from './pages/Tabs';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -23,16 +23,20 @@ import '@ionic/react/css/display.css';
 /**
  * Ionic Dark Mode
  * -----------------------------------------------------
- * For more info, please see:
+ * Intentionally disabled: the app is light-only for bright outdoor field use
+ * (see docs/DESIGN.md). To re-enable, uncomment one of the palettes below.
  * https://ionicframework.com/docs/theming/dark-mode
  */
 
 /* import '@ionic/react/css/palettes/dark.always.css'; */
 /* import '@ionic/react/css/palettes/dark.class.css'; */
-import '@ionic/react/css/palettes/dark.system.css';
+/* import '@ionic/react/css/palettes/dark.system.css'; */
 
 /* Theme variables */
 import './theme/variables.css';
+
+/* Tailwind + daisyUI design system */
+import './theme/global.css';
 
 setupIonicReact();
 
@@ -40,8 +44,9 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route path="/home" element={<Home />} />
-        <Route path="/" element={<Navigate to="/home" replace />} />
+        <Route path="/tabs/*" element={<Tabs />} />
+        <Route path="/" element={<Navigate to="/tabs/kebun" replace />} />
+        <Route path="*" element={<Navigate to="/tabs/kebun" replace />} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

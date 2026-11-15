@@ -1,3 +1,6 @@
+// Provides an in-memory IndexedDB so Dexie works under jsdom.
+import 'fake-indexeddb/auto';
+
 // Adds jest-dom's DOM matchers (toBeInTheDocument, toHaveTextContent, ...) to Vitest's expect.
 import '@testing-library/jest-dom/vitest';
 import { cleanup } from '@testing-library/react';
